@@ -175,3 +175,7 @@ Opnieuw heel wat elementen maar geen nood we zullen ze bespreken
 - `<select>` is een selectie. Het wordt altijd gebruikt in samenwerking met een `<option>` tag. die geeft de beschikbare opties weer.
 
 
+## Onze eigen website
+We gaan nu samen een eigen website maken. Maak je geen zorgen als hij er nog niet mooi uit ziet... We gaan eerst de funderingen opzetten (HTML) en later gaan we de site verder bouwen met CSS en Javascript, dat zal voor een volgende sessie zijn.
+
+We gaan een website maken voor tickets te kopen voor een vlucht of een wedstrijd of evenement.

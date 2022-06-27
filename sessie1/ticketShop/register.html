@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ticketShop</title>
+</head>
+
+<body>
+    <header>
+        <h1>TicketShop</h1>
+        <img src="img/logo.png" alt="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ticket.html">Tickets</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <!--register form-->
+        <form action="register.php" method="post">
+            <fieldset>
+                <legend>Register</legend>
+                <label for="firstname">firstname:</label>
+                <input type="text" name="firstname" id="firstname" required>
+                <label for="lastname">lastname:</label>
+                <input type="text" name="lastname" id="lastname" required>
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" name="birthdate" id="birthdate" required>
+                <label for="adress">Adress:</label>
+                <input type="text" name="adress" id="adress" required>
+                <label for="zipcode">Zipcode:</label>
+                <input type="text" name="zipcode" id="zipcode" required>
+                <label for="city">City:</label>
+                <input type="text" name="city" id="city" required>
+                <label for="country">Country:</label>
+                <input type="text" name="country" id="country" required>
+                <label for="phone">Phone:</label>
+                <input type="text" name="phone" id="phone" required>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+                <label for="password2">Repeat password:</label>
+                <input type="password" name="password2" id="password2" required>
+                <input type="submit" name="submit" value="Register">
+                <!--ask birthdate and adress-->
+
+            </fieldset>
+        </form>
+        <!--register form-->
+    </main>
+
+</body>
+
+</html>
