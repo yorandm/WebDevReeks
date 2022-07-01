@@ -18,6 +18,9 @@ Deze tutorial is bedoeld voor de deelnemers van de Web Development reeks van de 
 - [Sessie 1: deel 2 CSS Basics](#sessie-1-deel-2-css-basics)
   - [inleiding](#inleiding-1)
   - [CSS selectors](#css-selectors)
+  - [Onze website.](#onze-website)
+    - [Achtergrond](#achtergrond)
+    - [Lijsten](#lijsten)
 # Sessie 1: deel 1 HTML Basics
 ## Inleiding
 HTML beschrijft de structuur van je HTML document en de betekenis (semantiek) van de verschillende onderdelen.  
@@ -402,3 +405,65 @@ Je kan verder ook externe links toevoegen het moet niet een lokaal bestand zijn 
   - Als je dezelfde stijl voor verschillende elementen wilt gebruiken. Kan voor type en classes door elkaar zijn. 
   - verschillende schijden met een ',' zodat je meerdere elementen selecteert.
   - CSS: `div, .fablab, a {...}`
+
+## Onze website. 
+Vanaf nu werken we verder op onze website, we gaan de css theorie daarop toepassen.
+
+### Achtergrond
+We gaan voor onze body, al onze paginas, een achtergrond kleur instellen. Dit doe je heel eenvoudig door: 
+```css
+    body {
+        background-color: #f5f5f5;
+    }
+```
+De  #f5f5f5 is een heel licht grijs. 
+Zoals je nu gemerkt hebt is de achtergrond een beetje veranderd dus van kleur. Het valt niet zo hard op omdat het heel ilcht grijs is.
+
+Als volgende gaan we een letter
+
+
+### Lijsten
+
+Je kan lijsten op verschillende manieren opmaken. Bijvoorbeeld een ordered list ipv met 1. 2. en  zo voort met letters te laten werken (Eerste vb) of een unordered list zonder icoontje (tweede). Er zijn nog enkele andere voorbeelden, weet jij wat ze doen?
+```css
+    ol {
+        list-style-type: upper-alpha;
+    }
+    ul {
+        list-style-type: none;
+    }
+
+    ol li {
+        list-style-type: lower-alpha;
+    }
+    ol li {
+        list-style-type: lower-roman;
+    }
+    ol li {
+        list-style-type: upper-alpha;
+    }
+    ol li {
+        list-style-type: upper-roman;
+    }
+    ul{
+        list-style-image: url('./img/list.png');
+    }
+```
+
+Voor onze website hebben we een nav element met een ul er in we gaan die dus ook instellen met list-style-type:none
+```css
+    nav ul {
+        list-style-type: none;
+    }
+```	
+(nav ul betekent dat de ul in een nav moet zitten, hier is geen komma maar een spatie)
+
+Vervolgens gaan we een lettertype instellen. Er is veel mogelijk met lettertypes en tekst. Nu gaan we het echter beperkt houden je kan eens kijken bij [MDM font en text fundamentals](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals). 
+
+We gaan een font-family instellen. Dit is een reeks fonts waarop hij terugvalt als de eerste niet werkt gaat hij de tweede nemen en zo verder. Je kan zelf de fonts kiezen, hier wordt een standaard gebruikt die visual studio code voorstelde.
+```css
+body {
+    background-color: #f5f5f5;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+```
