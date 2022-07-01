@@ -1,6 +1,6 @@
 # STEAM-clubs 2022-2022 Web Development
 Deze tutorial is bedoeld voor de deelnemers van de Web Development reeks van de STEAM-clubs in het schooljaar 2022-2023.
-# Sessie 1 HTML Basics
+# Sessie 1: deel 1 HTML Basics
 ## Inleiding
 HTML beschrijft de structuur van je HTML document en de betekenis (semantiek) van de verschillende onderdelen.  
 De drie belangrijkste begrippen zijn:
@@ -179,3 +179,42 @@ Opnieuw heel wat elementen maar geen nood we zullen ze bespreken
 We gaan nu samen een eigen website maken. Maak je geen zorgen als hij er nog niet mooi uit ziet... We gaan eerst de funderingen opzetten (HTML) en later gaan we de site verder bouwen met CSS en Javascript, dat zal voor een volgende sessie zijn.
 
 We gaan een website maken voor tickets te kopen voor een vlucht of een wedstrijd of evenement.
+
+TODO AANVULLEN MET DE WEBSITE!!!!!
+___
+
+# Sessie 1: deel 2 CSS Basics
+## inleiding 
+CSS wordt gebruikt voor de layout van een website. 
+Zonder css zou het er allemaal niet zo mooi uit zien online. 
+Om u een voorbeeld te geven heb ik hier 2 afbeeldingen geplaatst van dezelfde website. Instagram. De ene heeft CSS de andere niet. Zo zie je ook dat die storys opgebouwd zijn als buttons in een unorderd list.
+![Instagram met CSS](./img/inst_metcss.PNG)
+![Instagram zonder CSS](./img/insta_nocss.jpg)
+
+CSS bestaat uit verschillende belangrijke begrippen. Die zijn uitgelegd aan de hand van volgende figuur. Deze figuur is een voorbeeld van een CSS code. Het is een stijlregel.
+![CSS stijlregel met basisbegrippen](./img/cssStijlregel.jpg)
+
+Een CSS bestand linken aan een HTML gebeurt met volgende regel:
+```html
+    <link rel="stylesheet" href="css/style.css">
+```
+Je kan verder ook externe links toevoegen het moet niet een lokaal bestand zijn maar mag even goed een css bestand online zijn. 
+
+## CSS selectors
+- Type selectors:
+  - selecteren alle elementen van een bepaald type, denk aan div, span, li,... 
+  - Je gebruikt bijvoorbeeld div indien je alle div elementen in de html dezelfde stijl wilt gebruiken 
+  - `div {...}`
+- Class selectors:
+  - Zorgen ervoor dat je classes kan selecteren uit de html. 
+  - In HTML bijvoorbeeld `<div class="fablab">...</div> <p class="fablab">...</p>`
+  - In CSS dan: `.fablab {...}`
+- Id selectors:
+  - om een uniek deel (element) van een pagina te identificeren in style sheet voorafgegaan door een #
+  - een Id komt maar 1 keer voor. 
+  - HTML: `<div id="ditIsId">...</div>`
+  - CSS: `#ditIsId {...}`
+- Group selectors:
+  - Als je dezelfde stijl voor verschillende elementen wilt gebruiken. Kan voor type en classes door elkaar zijn. 
+  - verschillende schijden met een ',' zodat je meerdere elementen selecteert.
+  - CSS: `div, .fablab, a {...}`
