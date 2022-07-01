@@ -180,7 +180,173 @@ We gaan nu samen een eigen website maken. Maak je geen zorgen als hij er nog nie
 
 We gaan een website maken voor tickets te kopen voor een vlucht of een wedstrijd of evenement.
 
-TODO AANVULLEN MET DE WEBSITE!!!!!
+In ons voorbeeld maken we een wedstrijd, je kan zelf kiezen wat je exact wilt doen...
+
+### Index.html
+We beginnen met de homepagina. Deze moet verplicht index.html noemen. De reden hiervoor is dat je webserver die file zal zoeken bij het opzoeken van de website. Met andere woorden als je website online staat op https://www.besteWebDesigner.be dan zal bij het ingeven van die url automatisch de index.html file gezocht worden.
+Maak een folder aan met als naam de naam van je website. Daarin maak je een html bestand aan index.html.
+Een standaard HTML bestand ziet er altijd hetzelfde uit. Je kan dit doen door de knop `!` te typen en dan op het eerste voorstel te klikken. Werkt dit niet kan je ook onderstaande selecteren en plakken:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+``` 
+Het eerste dat we gaan doen is de taal aanpassen. In de openingstag van html zie je `lang="en"` dit mag je aanpassen naar `lang="nl-BE"` of gewoon `lang="nl"`. Het is niet verplicht, maar het is een goede manier om de taal te geven, dit vooral voor blinden en slechtzienden die een e-reader gebruiken. Verder gaan we de titel van de pagina aanpassen naar bijvoorbeeld *home|ticketShop*
+
+We gaan beginnen met de header. Deze zal op elke pagina terug komen en bevat de titel van de website, het logo en de navigatie.
+
+Je maakt eerst een `<header></header>` tag aan. Hierin plaats je een titel en een logo. De titel gaan we h1 maken en de logo gaan we een img maken, je kan een map aanmaken die img heet in de map waarin je werkt. Daarin plaats je dan de afbeelding met de naam naar keuze de src tag word dan `src="img/naamLogo.jpg"` bijvoorbeeld met naamLogo.jpg uiteraard aangepast naar jouw logo en bestand. Het alt is de tekst die komt als de afbeelding niet kan geladen worden, ook word die gelezen op ereaders. Je kan daar bijvoorbeeld *logo* schrijven. 
+
+Verder gaan we een navigatie maken. We moeten naar home kunnen gaan, naar tickets, de bezoeker moet contact kunnen opnemen en ook inloggen/registreren moet mogelijk zijn. We gaan hiervoor een `<nav></nav>` tag maken. Hierin plaatsen we een ul met list items van anchor (`<li><a href=""></a></li>`). De anchor gaan we aanmaken met de naam van de pagina en de href is de url van de pagina. Hieronder kan je een voorbeeld zien van hoe het moet.
+
+
+```html
+    <header>
+        <h1>TicketShop</h1>
+        <img src="img/logo.png" alt="logo">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ticket.html">Tickets</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+``` 
+Na de header die we gemaakt hebben en zullen hergebruiken in de andere pagina's gaan we nu de *main* maken dit is alle content van de pagina zelf.
+We gaan werken met sections de eerste is de intro van de website en bevat een welkom en een tekstje over de website. De tweede section is dan een voorbeeld van een ticket.
+Een ticket zit in een fieldset en bevat een titel (welke wedstrijd) een afbeelding, een korte beschrijving, de prijs en een knop om naar de productpagina te gaan om het ticket te bestellen. Hieronder in het voorbeeld zie je hoe dat gebeurt. Probeer dit zo goed mogelijk na te maken en begrijpen vooral wat er gebeurt.
+```html
+    <main>
+        <section>
+            <h1>Welcome to TicketShop</h1>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.
+            </p>
+        </section>
+        <section>
+            <h2>Uitgelicht</h2>
+            <fieldset>
+                <h3>ploegA-ploegB</h3>
+                <img src="./img/gameImg.jpg" alt="ploegA-ploegB">
+                <p>description short</p>
+                <p>ticketprijs: €42.50</p>
+                <input type=button onClick="location.href='ticketInfo.html'" value='Meer info'>
+            </fieldset>
+        </section>
+    </main>
+```
+
+### ticketInfo.html
+
+Deze pagina bevat de informatie over het ticket. Hierin zie je de titel, de afbeelding, de beschrijving, de prijs en een knop om het ticket te bestellen.
+
+De basis van deze pagina is dezelfde als altijd (je kan bijvoorbeeld index.html kopieren en alles in de main weg doen en de titel aanpassen.)
+
+Verder bevat de main gewoon de titel, afbeelding, uitgebreide beschrijving, het aantal beschikbare tickets en de ticketprijs. Het speciale aan deze pagina is dat ze een input veld bevat voor het aantal tickets. Deze input veld geeft aan hoeveel tickets je wilt bestellen.
+
+```html
+    <main>
+        <h3>ploegA-ploegB</h3>
+        <img src="./img/gameImg.jpg" alt="ploegA-ploegB">
+        <p>description long</p>
+        <p>tickets available: 596</p>
+        <p>ticketprijs: €42.50</p>
+        <!--input number amount to order-->
+        <input type="number" name="amount" min="0" max="10" value="0">
+        <input type=button onClick="location.href='ticketInfo.html'" value='koop'>
+    </main>
+```
+
+### ticket.html
+De basis van deze pagina is dezelfde als altijd (je kan bijvoorbeeld index.html kopieren en alles in de main weg doen en de titel aanpassen.)
+
+Verder bevat de main van deze pagina verschillende wedstrijden. Ook die kan je kopieren uit de main van index.html en verschillende keren plakken in deze main. 
+
+### contact.html
+Opnieuw is de basis dezelfde.
+Dit formulier bevat een naam, email en berichtvak. 
+```html    
+    <main>
+        <!--Contact info form-->
+        <form action="" method="post">
+            <fieldset>
+                <legend>Contact</legend>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" required>
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" required>
+                <label for="message">Message:</label>
+                <textarea name="message" id="message" cols="30" rows="10" required></textarea>
+                <input type="submit" value="Send">
+            </fieldset>
+        </form>
+    </main>
+```
+
+### login.html
+Opnieuw is de basis hetzelfde. 
+Verder bestaat de main uit een formulier met username en password en een loginknop.
+```html
+        <form action="login.php" method="post">
+            <fieldset>
+                <legend>Login</legend>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password">
+                <input type="submit" name="submit" value="Login">
+            </fieldset>
+        </form>
+```
+
+### register.html
+Opnieuw is de basis hetzelfde.
+Verder bestaat de main uit een formulier een aantal input fields en een registerknop.
+```html
+        <form action="register.php" method="post">
+            <fieldset>
+                <legend>Register</legend>
+                <label for="firstname">firstname:</label>
+                <input type="text" name="firstname" id="firstname" required>
+                <label for="lastname">lastname:</label>
+                <input type="text" name="lastname" id="lastname" required>
+                <label for="birthdate">Birthdate:</label>
+                <input type="date" name="birthdate" id="birthdate" required>
+                <label for="adress">Adress:</label>
+                <input type="text" name="adress" id="adress" required>
+                <label for="zipcode">Zipcode:</label>
+                <input type="text" name="zipcode" id="zipcode" required>
+                <label for="city">City:</label>
+                <input type="text" name="city" id="city" required>
+                <label for="country">Country:</label>
+                <input type="text" name="country" id="country" required>
+                <label for="phone">Phone:</label>
+                <input type="text" name="phone" id="phone" required>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+                <label for="password2">Repeat password:</label>
+                <input type="password" name="password2" id="password2" required>
+                <input type="submit" name="submit" value="Register">
+                <!--ask birthdate and adress-->
+
+            </fieldset>
+        </form>
+```
+
 ___
 
 # Sessie 1: deel 2 CSS Basics
