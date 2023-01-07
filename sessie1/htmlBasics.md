@@ -370,7 +370,7 @@ Verder bestaat de main uit een formulier een aantal input fields en een register
             </fieldset>
         </form>
 ```
-
+Dat ws de basis van onze website. Al een hele boterham maar het viel al bij al nog mee, nietwaar? 
 ___
 
 # Sessie 1: deel 2 CSS Basics
