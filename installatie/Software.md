@@ -5,6 +5,8 @@ Deze tutorial is bedoeld voor de deelnemers van de Web Development reeks van de 
 - [Visual Studio Code](#visual-studio-code)
   - [Extensies voor Visual Studio Code](#extensies-voor-visual-studio-code)
 - [Browsers](#browsers)
+- [nodejs](#nodejs)
+- [Yarn](#yarn)
 - [Extra info](#extra-info)
 - [Problemen](#problemen)
 
@@ -63,12 +65,89 @@ Je krijgt dan volgend scherm te zien.
 Zoals je ziet heb ik al heel wat existensies geïnstalleerd. Dit is niet nodig voor de reeks. Je kan de extensies die je nodig hebt installeren door op de zoekbalk te klikken en de naam van de extensie in te typen. 
 De extensies die je nodig hebt zijn:
 - Live Server van Ritwick Dey. Druk op install. ![Live Server](./img/liveserver.jpg) 
+- Path Intellisense van Christian Kohler. Druk op install. ![Path Intellisense](./img/pathIntellisense.jpg)
+- Error Lens van Alexander. Druk op install. ![Error Lens](./img/errorLens.JPG)
+  - Voor Error Lens moet er nog een beetje configuratie gedaan worden. Druk op de `F1` toets en zoek voor `preferences open user settings (json)`. Klik op enter. Dan krijg je volgend scherm te zien, het zal er waarschijnlijk anders uitzien aangezien ik al vaker dingen heb moeten aanpassen. ![Error Lens](./img/errorLens2.JPG) Voeg voor het laatst `}` de volgende code toe: 
+```JSON 
+   {
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "HookyQR.beautify"
+  },
+  "errorLens.delay": 500,
+  "errorLens.enabledDiagnosticLevels": [
+      "error",
+      "warning",
+      "info"
+  ],
+  "errorLens.messageTemplate": "$severity $message $count ($source - $code)",
+  "errorLens.severityText": [
+      "❗️ ",
+      "⚠️ ",
+      "ℹ️ ",
+      "💡 "
+  ],
+  "editor.bracketPairColorization.enabled": true,
+  "security.workspace.trust.enabled": false
+}
+```
+
   
 # Browsers
 Voor de reeks hebben we een browser nodig die we kunnen gebruiken om onze webpagina's te testen. We gaan hiervoor Google Chrome gebruiken. Je kan deze downloaden op de [Google Chrome website](https://www.google.com/chrome/). Voor een klein deel is het echter handiger om Firefox Developer te gebruiken. Deze kan je downloaden op de [Mozilla Firefox website](https://www.mozilla.org/nl/firefox/developer/). Wil je deze niet installeren dan is dat geen probleem. Het is niet nodig om de reeks te volgen, maar wel handig.
 
 Opzich maakt het niet heel veel uit welke je gebruikt. Elke browser kan in principe gebruikt worden, het hangt dus deels af van je eigen voorkeur. Weet je niet wat kiezen? Dan kan je misschien voor Firefox gaan dan moet je niet veranderen van browser. 
  
+
+# nodejs
+NodeJs is een JavaScript runtime environent, wat dat precies is moet je je niet aantrekken. Het is een programma dat je nodig hebt om JavaScript te kunnen uitvoeren. We gaan dit gebruiken om onze webpagina's te testen. Je kan deze downloaden op de [nodejs website](https://nodejs.org/en/). Kies voor de LTS versie (18.xx.x op het moment van schrijven van deze tutorial).
+![nodeJs website](./img/nodeJsWebsite.JPG)
+
+Open het bestand dat werd gedownload. Je krijgt de startpagina van de installatie te zien. Druk op `Next`.
+
+![nodeJs installatie](./img/nodejs/startInstallWizard.JPG)
+
+Daarna krijg je de licentieovereenkomst te zien. Lees deze even door. Als je akkoord gaat met de voorwaarden kan je op `I accept the terms in the license agreement` klikken en dan op `Next`.
+
+![nodeJs installatie](./img/nodejs/licenseAgreement.jpg)  
+
+Dan krijg je de installatie locatie te zien. Hier kan je de installatie locatie aanpassen. Dit is niet nodig. Druk op `Next`.
+
+![nodeJs installatie](./img/nodejs/installLocation.JPG)
+
+Vervolgens krijg je de installatie opties te zien. Hier kan je kiezen of je de installatie wil aanpassen. Dit is niet nodig. Druk op `Next`.
+
+![nodeJs installatie](./img/nodejs/custom.jpg)
+
+We komen nu op het scherm 'tools for native modules' te zien. Duid hier NIET `Automatically install the necessary tools` aan. Druk op `Next`. (opgelet dit is aangeduid in de screenshot maar moet dus NIET aangeduid worden)
+
+![nodeJs installatie](./img/nodejs/tools.JPG)
+
+Tot slot krijg je een overzicht te zien van de installatie. Druk op `Install`.
+
+![nodeJs installatie](./img/nodejs/install.JPG)
+
+De installatie zal nu beginnen. Dit kan even duren.
+Het kan zijn dat je moet bevestigen dat de installatie mag uitgevoerd worden. Druk dan op `Yes`.
+
+Als de installatie gelukt is krijg je volgend scherm te zien. Druk op `Finish`.
+
+![nodeJs installatie](./img/nodejs/finish.JPG)
+
+# Yarn
+
+Nadien gaan we Yarn installeren. Yarn is een package manager. Dit is een programma dat je kan gebruiken om packages te installeren. Dit is handig om te gebruiken omdat je dan niet alle packages zelf moet downloaden. Je kan deze installeren via een command prompt. Dit is een programma dat je kan openen door op de Windows toets te drukken en dan `cmd` in te typen. Druk op enter. Je krijgt dan een zwart scherm te zien.
+
+![cmd](./img/yarn/cmd_openen.jpg)
+![cmd](./img/yarn/cmd_geopend.JPG)
+
+
+Typ in het zwarte scherm `npm install -g yarn`.
+![cmd](./img/yarn/yarn_getypt.JPG)
+ Druk op enter. De installatie zal beginnen. Dit kan even duren. Als het gelukt is mag je de command prompt sluiten.
+
 # Extra info 
 Microsoft voorziet ook een goede interactieve [tutorial](https://learn.microsoft.com/nl-nl/training/modules/develop-web-apps-with-vs-code/). Hier leer je hoe je webapps kan ontwikkelen met Visual Studio Code.
 
