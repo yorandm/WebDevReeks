@@ -16,8 +16,41 @@ Je kan de gepaste versie voor jouw besturingssysteem downloaden. Het handigste i
 
  ![Visual studio download pagina](./img/vsc_downloadpagina.jpg)
 
- De rest uitwerken!
+Open het gedownloade bestand.
 
+Je krijgt dan volgend venster te zien. Hier moet je de taal kiezen. Nederlands is nog niet beschikbaar dus kies best voor Engels om verder te gaan. Klik dan op `Ok`.
+
+![Visual studio taalkeuze](./img/taal_kiezen.PNG)
+
+Op de volgende pagina volgt de licentieovereenkomst. Lees deze even door en duid dan `I accept the agreement` aan. Klik dan op `Next`.
+
+![Visual studio licentie](./img/license_agreement.PNG)
+
+Dan komt het venster met de keuze voor de locatie van de installatie. Klik op `Next`.
+
+![Visual studio installatie locatie](./img/installatie_locatie.PNG)
+
+Dan komt u op volgend scherm. Klik op `Next`.
+
+![Visual studio start icoon](./img/start_menu.PNG)
+
+In het volgende scherm kan u kiezen of u een snelkoppeling naar de editor wil op het bureaublad. Dit is handig maar niet noodzakelijk. De opties `Add "Open with Code" action to Windows file context menu` en `Add "Open with Code" action to Windows directory context menu` zijn ook handig maar niet noodzakelijk. Dit is aan te raden als je van plan bent buiten de sessies ook veel projectjes te maken. Het zorgt er voor dat je vanuit je bestanden het project kan openen in Visual Studio Code Klik op `Next`.
+
+![Visual studio additional tasks](./img/additional_tasks.PNG)
+
+Tot slot komt u op het overzichtscherm. Klik hier op `Install`.
+
+![Visual studio installatie overzicht](./img/installKnop.PNG)
+
+De installatie zal nu beginnen. Dit kan even duren. Wacht tot de installatie voltooid is. Dan kan je op `Finish` klikken.
+
+![Visual studio installatie voltooid](./img/finish.PNG)
+
+Visual Studio Code zal nu openen. 
+
+![Visual studio installatie voltooid](./img/done.PNG)
+
+Zo nu heb je Visual Studio Code geïnstalleerd. We gaan nu nog enkele extensies installeren.
  ## Extensies voor Visual Studio Code
  Visual Studio Code heeft enkele basis functies maar is vooral gebouwd op zijn extensies. Extensies zijn kleine functionaliteiten die extra toegevoegd kunnen worden aan VSC. Dit maakt het een handige editor voor verschillende programmeertalen. In deze reeks gaan we enkele extensies gebruiken. Deze kan je installeren via de extensie manager van VSC. Je kan deze openen door op de extensie knop te drukken in de zijbalk van VSC. Zoals je kan zien in de foto. Deze balk ziet er mogelijk een klein beetje anders uit.
 
