@@ -20,7 +20,10 @@ Deze tutorial is bedoeld voor de deelnemers van de Web Development reeks van de 
   - [CSS selectors](#css-selectors)
   - [Onze website.](#onze-website)
     - [Achtergrond](#achtergrond)
-    - [Lijsten](#lijsten)
+    - [Tekst](#tekst)
+    - [Lijsten en navigatie](#lijsten-en-navigatie)
+    - [De links](#de-links)
+  - [CSS Grid](#css-grid)
 # Sessie 1: deel 1 HTML Basics
 ## Inleiding
 HTML beschrijft de structuur van je HTML document en de betekenis (semantiek) van de verschillende onderdelen.  
@@ -417,12 +420,20 @@ We gaan voor onze body, al onze paginas, een achtergrond kleur instellen. Dit do
     }
 ```
 De  #f5f5f5 is een heel licht grijs. 
-Zoals je nu gemerkt hebt is de achtergrond een beetje veranderd dus van kleur. Het valt niet zo hard op omdat het heel ilcht grijs is.
+Zoals je nu gemerkt hebt is de achtergrond een beetje veranderd dus van kleur. Het valt niet zo hard op omdat het heel licht grijs is.
 
-Als volgende gaan we een letter
+### Tekst
+Vervolgens gaan we een lettertype instellen. Er is veel mogelijk met lettertypes en tekst. Nu gaan we het echter beperkt houden je kan eens kijken bij [MDM font en text fundamentals](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals). 
 
+We gaan een font-family instellen. Dit is een reeks fonts waarop hij terugvalt als de eerste niet werkt gaat hij de tweede nemen en zo verder. Je kan zelf de fonts kiezen, hier wordt een standaard gebruikt die visual studio code voorstelde.
+```css
+body {
+    background-color: #f5f5f5;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+```
 
-### Lijsten
+### Lijsten en navigatie
 
 Je kan lijsten op verschillende manieren opmaken. Bijvoorbeeld een ordered list ipv met 1. 2. en  zo voort met letters te laten werken (Eerste vb) of een unordered list zonder icoontje (tweede). Er zijn nog enkele andere voorbeelden, weet jij wat ze doen?
 ```css
@@ -458,12 +469,83 @@ Voor onze website hebben we een nav element met een ul er in we gaan die dus ook
 ```	
 (nav ul betekent dat de ul in een nav moet zitten, hier is geen komma maar een spatie)
 
-Vervolgens gaan we een lettertype instellen. Er is veel mogelijk met lettertypes en tekst. Nu gaan we het echter beperkt houden je kan eens kijken bij [MDM font en text fundamentals](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals). 
-
-We gaan een font-family instellen. Dit is een reeks fonts waarop hij terugvalt als de eerste niet werkt gaat hij de tweede nemen en zo verder. Je kan zelf de fonts kiezen, hier wordt een standaard gebruikt die visual studio code voorstelde.
+Bij lijsten kunnen we verder ook specifieren over hoeveel colommen de lijst moet worden getoond. Standaard is dit 1 maar je kan dit veranderen. 
 ```css
-body {
-    background-color: #f5f5f5;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    nav ul {
+        column-count: 3;
+    }
+```
+
+![column-count: 3](./img/navigatie_column3.jpg)
+Zoals je ziet is de lijst nu opgedeeld in 3 kolommen.
+
+Voor onze website zullen we voor 5 kolommen gaan. 
+```css
+    nav ul {
+        column-count: 5;
+    }
+```
+### De links
+In dit deel gaan we de links van de navigatie een beetje aanpassen. 
+
+Om te beginnen gaan we een kadertje rond de links zetten. 
+Daarvoor gaan we de link items selecteren en een border (of rand) instellen. Bij deze border heb je een dikte, een stijl en een kleur.
+In dit geval kiezen we voor een volle lijn in het zwart met een dikte van 1px.
+
+```css
+    nav ul li {
+        border: 1px solid black;
+    }
+```
+
+Nu zien de links er niet meer zo mooi uit hé? Dit komt omdat de list items de resterende plaats verdelen over zichzelf. Je kan dit oplossen door het `a` element te selecteren in plaats van het li element. Weet je nog hoe dat moet?
+
+Nu is de rand nogal op de tekst geplakt. 
+Er zijn daarvoor oplossingen. Maar de vraag is welke werkt in dit geval?
+
+- Enerzijds is er padding. Dat is de ruimte binnen het element.  
+- De andere optie is margin. Dat is de ruimte tussen het element en de andere elementen op de pagina. 
+
+Die twee worden nog wel eens door elkaar gehaald. deze handige afbeelding kan misschien iets duidelijk maken. 
+![margin vs padding](./img/margin_padding.jpg)
+
+Als je nu naar die afbeelding kijkt. Welke van de twee zou je gebruiken om plaats te krijgen tussen de rand en de tekst?
+```css
+    nav ul li a {
+        border: 1px solid black;
+        padding: 10px;
+    }
+```
+```css
+    nav ul li a {
+        border: 1px solid black;
+        margin: 10px;
+    }
+```
+
+Juist ja de padding. De margin zorgt ervoor dat de link verder van de andere links komt te staan.
+
+Zullen we misschien nog een ronde rand geven aan de linkjes? 
+```css
+    nav ul li a {
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 10px;
+    }
+```
+
+Border radius is een property die je kan gebruiken om de hoeken van een element af te ronden. Misschien ken je radius wel van uit wiskunde? 
+
+tot slot kunnen we er ook voor zorgen dat de kleur veranderd als we over de link gaan met de muis. Dit doen we met de pseudo-class hover. 
+pseudo classes zijn speciale classes die je kan gebruiken om een element te selecteren op basis van een bepaalde toestand.
+
+```css
+nav ul li :hover {
+    background-color: green;
 }
 ```
+Deze code zorgt ervoor dat de achtergrond groen wordt als je met de muis over de link gaat.
+
+
+## CSS Grid
+uitleg to do 

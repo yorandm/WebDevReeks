@@ -5,4 +5,65 @@ body {
 
 nav ul {
     list-style-type: none;
+    columns: 5;
 }
+
+nav ul li a {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+nav ul li :hover {
+    background-color: green;
+}
+
+
+/*grid*/
+
+
+/*
+header {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas: "logo . .   .   ." "logo title . . ." "logo . . . . " "nav nav nav nav nav";
+}
+
+header>img {
+    grid-area: logo;
+}
+
+header>h1 {
+    grid-area: title;
+}
+
+nav {
+    grid-area: nav;
+}
+
+
+/*grid other way*/
+
+
+/* header {
+    max-height: 500px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+header>img {
+    grid-column: 1;
+    grid-row: 1/3;
+}
+
+header>h1 {
+    grid-column: 2/4;
+    grid-row: 2;
+}
+
+nav {
+    grid-column: 1/6;
+    grid-row: 4;
+} */
