@@ -40,30 +40,6 @@ nav {
     grid-area: nav;
 }
 
-.ticket img {
-    width: auto;
-    height: 200px;
-}
-
-.ticket {
-    display: inline-block;
-    max-width: 300px;
-    height: auto;
-}
-
-.ticket h3 {
-    text-align: center;
-}
-
-.ticket h3:first-letter {
-    text-transform: uppercase;
-}
-
-
-/* section#ticket {
-  display: flex;
-} 
-
 
 /*
 /*grid other way*/
@@ -90,3 +66,39 @@ nav {
     grid-column: 1/6;
     grid-row: 4;
 } */
+
+
+/*tickets*/
+
+.ticket img {
+    width: auto;
+    height: 200px;
+}
+
+.ticket {
+    max-width: 300px;
+    height: auto;
+}
+
+.ticket h3 {
+    text-align: center;
+}
+
+.ticket h3:first-letter {
+    text-transform: uppercase;
+}
+
+
+/*flex*/
+
+section#ticket {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.ticket {
+    flex-basis: 250px;
+    flex-grow: 1;
+    flex-shrink: 1;
+}

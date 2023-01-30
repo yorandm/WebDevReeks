@@ -29,8 +29,10 @@ Deze tutorial is bedoeld voor de deelnemers van de Web Development reeks van de 
     - [Flex wrap](#flex-wrap)
     - [Items uitlijnen](#items-uitlijnen)
       - [justify-content](#justify-content)
+      - [align-items](#align-items)
+    - [Order](#order)
+    - [Flex Grow/shrink/basis](#flex-growshrinkbasis)
   - [Tickets](#tickets)
-  - [TODO](#todo)
 # Sessie 1: deel 1 HTML Basics
 ## Inleiding
 HTML beschrijft de structuur van je HTML document en de betekenis (semantiek) van de verschillende onderdelen.  
@@ -594,49 +596,48 @@ De verschillende opties voor justify-content zijn:
 Probeer deze zelf eens uit en bekijk het verschil!
 ![justify-content](./img/justifycontent.jpg)
 
+#### align-items
+De verschillende opties voor align-items zijn:
+- stretch
+- flex-start
+- flex-end
+- center
+- baseline (aligneert items volgens onderkant tekst)
 
+Ook hier geldt, probeer zelf eens
 
+### Order
+Door een order toe te voegen kan je de volgorde aanpassen. Standaard wordt de volgorde bepaald door de volgorde van de elementen in de HTML. Door een order toe te voegen kan je de volgorde aanpassen. (word van klein naar groot gedaan)
+```css
+div#one {
+    order: 5
+}
 
+div#two {
+    order: 4
+}
 
+```
+![flex order](./img/flexorder.jpg)
 
+### Flex Grow/shrink/basis
 
+Flex grow, shrink en basis zijn eigenschappen die je kan toepassen op flex items.
+Flex grow zorgt ervoor dat een item groter wordt als er ruimte voor is. Flex shrink zorgt ervoor dat een item kleiner wordt als er te weinig ruimte is. Flex basis zorgt ervoor dat een item een bepaalde breedte heeft. 
+```css
+div#two {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+```
+Probeer dit zelf even uit. Je kan je scherm dan groter en kleiner maken en je zal zien dat de items zich aanpassen, of net niet... 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![flex grow shrink basis](./img/flexgrow.jpg)
 
 
 
 ## Tickets
+Terug naar onze website;
 We gaan de tickets een beetje mooier maken.
 voeg aan de fieldsets van de tickets een class ticket toe. 
 Vergeet niet bij de index.html te kijken!
@@ -691,8 +692,52 @@ Voor de zekerheid geven we een maximum breedte van 300px. En de hoogte zetten we
 ```
 Nu is de hoogte niet gelijk bij elk element. We kunnen dit oplossen door gebruik te maken van **flex** 
 
-## TODO
-
---- 
 Om dit te doen werken moeten we een paar dingen te veranderen.
-Bij de `.ticket` mag je de `display:inline-block` weglaten
+Bij de `.ticket` mag je de `display:inline-block` weglaten.
+```css
+.ticket {
+    max-width: 300px;
+    height: auto;
+}
+```
+
+Vervolgens moeten we de flex container maken. We voegen een id toe aan de section waar de tickets in staan.
+```html
+        <section id="ticket"> <!--hier id="ticket" aan toevoegen -->
+            <fieldset class="ticket">
+                <h3>ploegA-ploegB</h3>
+                <img src="./img/gameImg.jpg" alt="ploegA-ploegB">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, dolorum odio libero consequatur
+                    consequuntur distinctio possimus odit quae obcaecati officia! Accusamus molestias corporis beatae
+                    hic culpa voluptatibus error quae totam.</p>
+                <p>ticketprijs: €42.50</p>
+                <input type=button onClick="location.href='ticketInfo.html'" value='Meer info'>
+            </fieldset>
+            ...
+
+            </fieldset>
+        </section>
+```
+
+En in de css:
+```css
+section#ticket {
+    display: flex;
+}
+```
+We gaan de space-evenly gebruiken om de tickets mooi naast elkaar te krijgen.
+```css
+section#ticket {
+    display: flex;
+    justify-content: space-evenly;
+}
+```
+Nu zijn de tickets mooi naast elkaar. Maar ze zijn nog niet even groot. We gaan eerst beginnen met een flex-basis van 250px. Vervolgens kunnen we met behulp van flex-grow en flex-shrik de tickets gelijk maken. 
+
+```css
+.ticket {
+    flex-basis: 250px;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+```
