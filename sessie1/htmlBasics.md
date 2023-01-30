@@ -741,3 +741,5 @@ Nu zijn de tickets mooi naast elkaar. Maar ze zijn nog niet even groot. We gaan 
     flex-shrink: 1;
 }
 ```
+
+Vervolgens gaan we de ticketprijs en knop (laatste 2 elementen) onderaan de ticket zetten.

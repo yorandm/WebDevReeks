@@ -102,3 +102,11 @@ section#ticket {
     flex-grow: 1;
     flex-shrink: 1;
 }
+
+section .ticket :nth-last-child(2) {
+    align-self: flex-end;
+}
+
+section .ticket :nth-last-child(1) {
+    align-self: flex-end;
+}
