@@ -21,8 +21,6 @@ nav ul li :hover {
 
 /*grid*/
 
-
-/*
 header {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -42,7 +40,32 @@ nav {
     grid-area: nav;
 }
 
+.ticket img {
+    width: auto;
+    height: 200px;
+}
 
+.ticket {
+    display: inline-block;
+    max-width: 300px;
+    height: auto;
+}
+
+.ticket h3 {
+    text-align: center;
+}
+
+.ticket h3:first-letter {
+    text-transform: uppercase;
+}
+
+
+/* section#ticket {
+  display: flex;
+} 
+
+
+/*
 /*grid other way*/
 
 

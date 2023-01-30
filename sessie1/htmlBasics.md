@@ -24,6 +24,13 @@ Deze tutorial is bedoeld voor de deelnemers van de Web Development reeks van de 
     - [Lijsten en navigatie](#lijsten-en-navigatie)
     - [De links](#de-links)
   - [CSS Grid](#css-grid)
+  - [CSS Flexbox](#css-flexbox)
+    - [Flex containter](#flex-containter)
+    - [Flex wrap](#flex-wrap)
+    - [Items uitlijnen](#items-uitlijnen)
+      - [justify-content](#justify-content)
+  - [Tickets](#tickets)
+  - [TODO](#todo)
 # Sessie 1: deel 1 HTML Basics
 ## Inleiding
 HTML beschrijft de structuur van je HTML document en de betekenis (semantiek) van de verschillende onderdelen.  
@@ -547,5 +554,145 @@ nav ul li :hover {
 Deze code zorgt ervoor dat de achtergrond groen wordt als je met de muis over de link gaat.
 
 
+
+
+
 ## CSS Grid
 uitleg to do 
+
+
+## CSS Flexbox
+
+Bij dit deel van de opdracht kan je in de map `flexbegin` een HTML en CSS bestand vinden. Je kan deze met de live server openen, bekijken en vooral aanpassen en wat prutsen.
+### Flex containter
+Bij normale pagina word elk element onder elkaar gezet. Elke blok begint dus op een nieuwe lijn. 
+Flexbox veranderd dit. Het idee is dat er een *Main Axis* is waarlangs elk element geplaatst word. En dan is er de *Cross Axis* die loodrecht staat op de *Main Axis*. Als de main axis vol staat begint het volgende element op de volgende plek in de cross axis. Standaard is de main axis horizontaal van links naar rechts en de cross axis verticaal van boven naar beneden. Dit kan aangepast worden met behulp van de flex-direction property. 
+![flexdirection](./img/flexdirection.jpg)
+
+Een overzicht van flex:
+![flex overview](./img/flexoverview.jpg)
+
+### Flex wrap
+
+Voor flex wrap verwijs ik graag naar onderstaande afbeelding. Dit maakt het eigenlijk duidelijk... Door de flex container een flex-wrap property te geven kan je ervoor zorgen dat elementen die niet meer passen in de main axis naar de volgende lijn gaan. Standaard is 'nowrap' van toepassing.
+![flex wrap](./img/flexwrap.jpg)
+
+### Items uitlijnen
+Om de items uit te lijnen kan je gebruik maken van de justify-content en align-items properties.
+`justify-content` zorgt ervoor dat de items op de main axis uitgelijnd worden.
+`align-items` zorgt er dan weer voor dat de items op de cross axis uitgelijnd worden.
+
+#### justify-content
+De verschillende opties voor justify-content zijn:
+- flex-start
+- flex-end
+- center
+- space-around
+- space-between
+- space-evenly
+
+Probeer deze zelf eens uit en bekijk het verschil!
+![justify-content](./img/justifycontent.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Tickets
+We gaan de tickets een beetje mooier maken.
+voeg aan de fieldsets van de tickets een class ticket toe. 
+Vergeet niet bij de index.html te kijken!
+![ticket class toevoegen](./img/ticketclass.jpg)
+
+Om te beginnen gaan we de foto kleiner maken.
+We gaan de hoogte 200px maken en de breedte automatisch laten schalen
+```css
+.ticket img {
+    width: 200px;
+    height: auto;
+}
+```
+Laten we nu de titel in het midden zetten, de eerste letter van de titel zou altijd een hoofdletter moeten zijn. We gaan daarvoor een truckje toepassen.
+Om te beginnen zetten we het h3 element (de titel) in het midden van zijn container. Dat zou niet zo moeilijk moeten zijn. 
+```css
+.ticket h3 {
+    text-align: center;
+}
+```
+Nu gaan we ook de eerste letter van de titel in hoofdletter zetten. We kunnen daarvoor iets gebruiken dat `text-transform` heet. 
+```css
+.ticket h3 {
+    text-align: center;
+    text-transform: capitalize;
+}
+```
+
+Als je goed kijkt, zie je nu dat elk woord begint met de eerste letter als hoofdletter. Dat is niet wat we willen. We willen enkel de eerste letter van de volledige titel in hoofdletter.
+We kunnen hiervoor de pseudo class `first-letter` gebruiken. (Het maakt niet uit of je `capitalize` of `uppercase` gebruikt)
+```css
+.ticket h3:first-letter {
+    text-transform: uppercase;
+}
+```
+
+Het volgende 'probleem' is dat een ticket de hele breedte van de pagina inneemt maar dat is niet zo fijn. We willen dat de fieldset van een ticket enkel de plek inneemt die het nodig heeft en dat we op die manier meerdere tickets naast elkaar kunnen krijgen. 
+Om dat te doen zou je de fieldset een breedte kunnen geven. Maar er is een ander truckje voor.
+We gaan de fieldset een display geven van `inline-block`. 
+```css
+.ticket {
+    display: inline-block;
+}
+```
+Voor de zekerheid geven we een maximum breedte van 300px. En de hoogte zetten we op `auto`.
+```css
+.ticket {
+    display: inline-block;
+    max-width: 300px;
+    height: auto;
+}
+```
+Nu is de hoogte niet gelijk bij elk element. We kunnen dit oplossen door gebruik te maken van **flex** 
+
+## TODO
+
+--- 
+Om dit te doen werken moeten we een paar dingen te veranderen.
+Bij de `.ticket` mag je de `display:inline-block` weglaten
