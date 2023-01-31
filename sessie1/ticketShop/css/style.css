@@ -103,10 +103,11 @@ section#ticket {
     flex-shrink: 1;
 }
 
-section .ticket :nth-last-child(2) {
-    align-self: flex-end;
+fieldset.ticket {
+    display: flex;
+    flex-direction: column;
 }
 
-section .ticket :nth-last-child(1) {
-    align-self: flex-end;
+section .ticket :nth-last-child(2) {
+    margin-top: auto;
 }

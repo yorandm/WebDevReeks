@@ -743,3 +743,16 @@ Nu zijn de tickets mooi naast elkaar. Maar ze zijn nog niet even groot. We gaan 
 ```
 
 Vervolgens gaan we de ticketprijs en knop (laatste 2 elementen) onderaan de ticket zetten.
+We gaan daarvoor de tickets ook een `flex` maken en dan de `flex-direction` van de `fieldset.ticket` veranderen naar `column`. 
+```css
+fieldset.ticket {
+    display: flex;
+    flex-direction: column;
+}
+```
+Tot slot nemen we de prijs (voorlaatste element) een margin-top geven die automatisch gezet wordt.
+```css
+section .ticket :nth-last-child(2) {
+    margin-top: auto;
+}
+```
