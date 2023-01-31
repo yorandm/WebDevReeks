@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>htmlBasics.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="steam-clubs-2022-2022-web-development">STEAM-clubs 2022-2022 Web Development</h1>
+<p>Deze tutorial is bedoeld voor de deelnemers van de Web Development reeks van de STEAM-clubs in het schooljaar 2022-2023.</p>
+<ul>
+<li><a href="#steam-clubs-2022-2022-web-development">STEAM-clubs 2022-2022 Web Development</a></li>
+<li><a href="#sessie-1-deel-1-html-basics">Sessie 1: deel 1 HTML Basics</a>
+<ul>
+<li><a href="#inleiding">Inleiding</a></li>
+<li><a href="#tags-en-elementen">Tags en elementen</a></li>
+<li><a href="#attributen">Attributen</a></li>
+<li><a href="#html-standaard-elementen">HTML standaard elementen</a></li>
+<li><a href="#tabellen">Tabellen</a></li>
+<li><a href="#formulieren">Formulieren</a></li>
+<li><a href="#onze-eigen-website">Onze eigen website</a>
+<ul>
+<li><a href="#indexhtml">Index.html</a></li>
+<li><a href="#ticketinfohtml">ticketInfo.html</a></li>
+<li><a href="#tickethtml">ticket.html</a></li>
+<li><a href="#contacthtml">contact.html</a></li>
+<li><a href="#loginhtml">login.html</a></li>
+<li><a href="#registerhtml">register.html</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sessie-1-deel-2-css-basics">Sessie 1: deel 2 CSS Basics</a>
+<ul>
+<li><a href="#inleiding-1">inleiding</a></li>
+<li><a href="#css-selectors">CSS selectors</a></li>
+<li><a href="#onze-website">Onze website.</a>
+<ul>
+<li><a href="#achtergrond">Achtergrond</a></li>
+<li><a href="#tekst">Tekst</a></li>
+<li><a href="#lijsten-en-navigatie">Lijsten en navigatie</a></li>
+<li><a href="#de-links">De links</a></li>
+</ul>
+</li>
+<li><a href="#css-grid">CSS Grid</a></li>
+<li><a href="#css-flexbox">CSS Flexbox</a>
+<ul>
+<li><a href="#flex-containter">Flex containter</a></li>
+<li><a href="#flex-wrap">Flex wrap</a></li>
+<li><a href="#items-uitlijnen">Items uitlijnen</a>
+<ul>
+<li><a href="#justify-content">justify-content</a></li>
+<li><a href="#align-items">align-items</a></li>
+</ul>
+</li>
+<li><a href="#order">Order</a></li>
+<li><a href="#flex-growshrinkbasis">Flex Grow/shrink/basis</a></li>
+</ul>
+</li>
+<li><a href="#tickets">Tickets</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="sessie-1-deel-1-html-basics">Sessie 1: deel 1 HTML Basics</h1>
+<h2 id="inleiding">Inleiding</h2>
+<p>HTML beschrijft de structuur van je HTML document en de betekenis (semantiek) van de verschillende onderdelen.<br>
+De drie belangrijkste begrippen zijn:</p>
+<ol>
+<li>element</li>
+<li>tag</li>
+<li>attribute</li>
+</ol>
+<h2 id="tags-en-elementen">Tags en elementen</h2>
+<p><img src="./img/elementtag.jpg" alt="tag and element"></p>
+<p>Er bestaan ook lege tags. <code>&lt;br&gt;</code> is daar een voorbeeld van. Het maakt voor HTML niet echt uit of je <code>&lt;/br&gt;</code> of <code>&lt;br&gt;</code> gebruikt. Voor sommige frameworks op JavaScript (later meer) zoals React is dit wel belangrijk.<br>
+Een voorbeeld:<br>
+<code>&lt;p&gt;Welkom! &lt;br&gt; Bij STEAMCLUBS&lt;/p&gt;</code></p>
+<p>Je kan ook meerdere tags in een element hebben die zorgen dan voor zogenaamde nested tags. Een lijst is een veelgebruikt voorbeeld hiervan.</p>
+<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span> Rijbewijs A<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span> Rijbewijs B<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span> Rijbewijs C<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</div></code></pre>
+<h2 id="attributen">Attributen</h2>
+<p>Verder zijn er ook attributen dit zijn extra informatie die je in een opening of lege tag plaatst. Dit zorgt bevoorbeeld voor dat men dingen kan
+<img src="./img/attribut.jpg" alt="attribuut"></p>
+<h2 id="html-standaard-elementen">HTML standaard elementen</h2>
+<p>De meest basis elementen:</p>
+<ul>
+<li>Koppen <code>&lt;h1&gt;</code> tot en met <code>&lt;h6&gt;</code></li>
+<li>Paragraaf (stukje tekst): <code>&lt;p&gt;</code></li>
+<li>Hyperlink (link naar andere pagina) <code>&lt;a href=&quot;link&quot;&gt;</code></li>
+<li>Afbeelding: <code>&lt;img src=&quot;link&quot; alt=&quot;alternatieve tekst&quot;&gt;</code></li>
+<li>Form elementen (zie later)</li>
+<li>Lijsten <code>&lt;ul&gt;</code> voor ongeordende lijsten en <code>&lt;ol&gt; </code>voor geordende lijsten (genummerd)
+<ul>
+<li><code>&lt;li&gt;</code> is een item in een lijst</li>
+</ul>
+</li>
+<li>Description list<code> &lt;dl&gt;</code>
+<ul>
+<li><code>&lt;dt&gt;</code> De term waarvoor een beschrijving nodig is en</li>
+<li><code>&lt;dd&gt;</code> voor de beschrijving van een item</li>
+</ul>
+</li>
+</ul>
+<p>De andere zaken zullen duidelijk worden bij het gebruik. Heel veel kan je gewoon opzoeken op internet.</p>
+<p><code>&lt;div&gt;</code> dient om een soort van containers zie het als boxen waarbinnen tags kan plaatsen te maken. Dit zie je niet op je scherm verschijnen.<br>
+<code>&lt;span&gt;</code> is een soort van container die je gewoon kan plaatsen. Dit is een soort van inline element. Wat betekent dat het niet op een volgende lijn komt zoals een div (wat een block element is) maar dat het op dezelfde lijn blijft. Je kan dus meerdere spans naast elkaar hebben. Zo is bv een img of een a tag ook inline elementen. Terwijl h1 en p zijn block elementen.
+Deze zijn niet belangrijk voor de HTML, maar voor de CSS.</p>
+<p>Er zijn nog heel wat andere elementen maar die zul je kunnen opzoeken meestal. Een kort overzicht:</p>
+<p><img src="./img/elem1.jpg" alt="elementen">
+<img src="./img/elem2.jpg" alt="elementen">
+<img src="./img/elem3.jpg" alt="elementen"></p>
+<p>Er blijven nog 2 belangrijke dingen over die we niet besproken hebben tot nu toe namelijk tabellen en formulieren. We gaan beginnen met tabellen:</p>
+<h2 id="tabellen">Tabellen</h2>
+<p><img src="./img/tabelVoorbeeld.jpg" alt="Tabel voorbeeld"></p>
+<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">caption</span>&gt;</span>
+            Table with random data
+        <span class="hljs-tag">&lt;/<span class="hljs-name">caption</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Name<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>Age<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>City<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>John<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>25<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Amsterdam<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Jane<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>23<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Rotterdam<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Jeroen<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>22<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Den Haag<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Jasper<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>15<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>Boekel<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+</div></code></pre>
+<p>Een tabel bevat zoals je ziet veel verschillende tags we gaan ze van boven naar beneden doorlopen.</p>
+<ul>
+<li><code>&lt;table&gt;</code> is de tabel zelf dit is de buitenste tag en bevat alles van de tabel zelf.</li>
+<li><code>&lt;caption&gt;</code> is de titel van de tabel.</li>
+<li><code>&lt;tr&gt;</code> is een rij in de tabel.</li>
+<li><code>&lt;th&gt;</code> is een kop in de tabel.</li>
+<li><code>&lt;td&gt;</code> is een cel in de tabel.</li>
+<li><code>&lt;th&gt;</code> en <code>&lt;td&gt;</code> zijn gelijkvormig.</li>
+</ul>
+<h2 id="formulieren">Formulieren</h2>
+<p>Formulieren zijn een soort van tabel waar je data in kan invullen. Deze zijn gebaseerd op de HTML5.</p>
+<p><img src="./img/formulier.jpg" alt="Formulier voorbeeld"></p>
+<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Pizza order<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"/order"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"name"</span>&gt;</span>Name
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"name"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"firstname"</span>&gt;</span>Firstname
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"firstname"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"firstname"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"password"</span>&gt;</span>Password
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"password"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"delivertime"</span>&gt;</span>Deliver time
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"delivertime"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"delivertime"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"morning"</span>&gt;</span>Morning
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"delivertime"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"delivertime"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"afternoon"</span>&gt;</span>Afternoon
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"delivertime"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"delivertime"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"evening"</span>&gt;</span>Evening<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"type"</span>&gt;</span>Type
+          <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"type"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"type"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"margherita"</span>&gt;</span>Margherita<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"hawaiian"</span>&gt;</span>Hawaiian<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">option</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"meat"</span>&gt;</span>Meat<span class="hljs-tag">&lt;/<span class="hljs-name">option</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"toppings"</span>&gt;</span>Toppings
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"toppings"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"toppings"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"cheese"</span>&gt;</span>Cheese
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"toppings"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"toppings"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"mushrooms"</span>&gt;</span>Mushrooms
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"toppings"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"toppings"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"pepperoni"</span>&gt;</span>Pepperoni
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"toppings"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"toppings"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"sausage"</span>&gt;</span>Sausage<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"deliverdate"</span>&gt;</span>Deliver date
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"date"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"deliverdate"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"deliverdate"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"aantal"</span>&gt;</span>Number
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"aantal"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"aantal"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"extra"</span>&gt;</span>Extra info
+                        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"extra"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"extra"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-comment">&lt;!--submit button--&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Order"</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>   
+</div></code></pre>
+<p>Opnieuw heel wat elementen maar geen nood we zullen ze bespreken</p>
+<ul>
+<li><code>&lt;fieldset&gt;</code> is een box rond het formulier die je ziet op de screenshot.</li>
+<li><code>&lt;legend&gt;</code> is de titel van de fieldset.</li>
+<li><code>&lt;form&gt;</code> is het formulier zelf. Dit is de buitenste tag en bevat alles van de formulier zelf. Het is een tag die je kan gebruiken om data te verzenden. Deze tag heeft een action en een method. De action is de URL waar de data naar toe moet. De method is de manier waarop de data verzonden moet worden. Indien je meer wilt weten over die methoden dan moet je die maar eens opzoeken, er is heel veel info over te vinden. Voor de volledigheid een klein overzicht van de meestgebruikte methode:
+<ul>
+<li><code>get</code></li>
+<li><code>post</code></li>
+<li><code>put</code></li>
+<li><code>delete</code></li>
+</ul>
+</li>
+<li><code>&lt;label&gt;</code> is een label voor een input. Het zegt wat er in de input moet komen. Het label heeft een for attribuut dit geeft aan voor welke input de label bedoelt is. Zo kan je bijvoorbeeld klikken op een label en word je naar de juiste input gestuurd.</li>
+<li><code>&lt;input&gt;</code> is waar je al je input schrijft of geeft. Die kan verschillende attributen hebben. De belangrijkste zijn:
+<ul>
+<li><code>type</code> is het type input. De verschillende types zijn:
+<ul>
+<li>text</li>
+<li>password</li>
+<li>radio (unieke selectie uit de keuzes)</li>
+<li>checkbox is hetzelfde als een radio maar je kan meerdere aanduiden.</li>
+<li>date is een datum.</li>
+<li>number is een getal.</li>
+<li>submit dit is de knop gebruikt voor het indinen van het formulier.</li>
+<li>...</li>
+</ul>
+</li>
+<li><code>name</code> geeft de naam van het input</li>
+<li><code>id</code> is het id van de input (dit is een unieke naam voor de input) en dit is een vereiste attribuut.</li>
+<li><code>value</code> dient om een standaard waarde mee te geven</li>
+<li><code>checked</code> dient voor checkboxes al dan niet standaard aangevinkt te zijn.</li>
+<li><code>disabled</code> is een attribuut die er voor zorgt dat je het niet kan invullen.</li>
+<li><code>required</code> is een attribuuut die aangeeft dat de input verplicht is.</li>
+<li><code>autofocus</code> is een attribuut dat aangeeft dat de input automatisch moet worden aangeduid.</li>
+<li><code>min</code> en <code>max</code> zijn voor inputs die een waarde hebben.</li>
+<li><code>step</code> is voor inputs die een waarde hebben. Je geeft hiermee aan per hoeveel het vermeerderd word</li>
+<li><code>placeholder</code> is voor inputs die leeg zijn. Het zegt wat er in de input moet komen.</li>
+</ul>
+</li>
+<li><code>&lt;select&gt;</code> is een selectie. Het wordt altijd gebruikt in samenwerking met een <code>&lt;option&gt;</code> tag. die geeft de beschikbare opties weer.</li>
+</ul>
+<h2 id="onze-eigen-website">Onze eigen website</h2>
+<p>We gaan nu samen een eigen website maken. Maak je geen zorgen als hij er nog niet mooi uit ziet... We gaan eerst de funderingen opzetten (HTML) en later gaan we de site verder bouwen met CSS en Javascript, dat zal voor een volgende sessie zijn.</p>
+<p>We gaan een website maken voor tickets te kopen voor een vlucht of een wedstrijd of evenement.</p>
+<p>In ons voorbeeld maken we een wedstrijd, je kan zelf kiezen wat je exact wilt doen...</p>
+<h3 id="indexhtml">Index.html</h3>
+<p>We beginnen met de homepagina. Deze moet verplicht index.html noemen. De reden hiervoor is dat je webserver die file zal zoeken bij het opzoeken van de website. Met andere woorden als je website online staat op https://www.besteWebDesigner.be dan zal bij het ingeven van die url automatisch de index.html file gezocht worden.
+Maak een folder aan met als naam de naam van je website. Daarin maak je een html bestand aan index.html.
+Een standaard HTML bestand ziet er altijd hetzelfde uit. Je kan dit doen door de knop <code>!</code> te typen en dan op het eerste voorstel te klikken. Werkt dit niet kan je ook onderstaande selecteren en plakken:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">"X-UA-Compatible"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"IE=edge"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Document<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Het eerste dat we gaan doen is de taal aanpassen. In de openingstag van html zie je <code>lang=&quot;en&quot;</code> dit mag je aanpassen naar <code>lang=&quot;nl-BE&quot;</code> of gewoon <code>lang=&quot;nl&quot;</code>. Het is niet verplicht, maar het is een goede manier om de taal te geven, dit vooral voor blinden en slechtzienden die een e-reader gebruiken. Verder gaan we de titel van de pagina aanpassen naar bijvoorbeeld <em>home|ticketShop</em></p>
+<p>We gaan beginnen met de header. Deze zal op elke pagina terug komen en bevat de titel van de website, het logo en de navigatie.</p>
+<p>Je maakt eerst een <code>&lt;header&gt;&lt;/header&gt;</code> tag aan. Hierin plaats je een titel en een logo. De titel gaan we h1 maken en de logo gaan we een img maken, je kan een map aanmaken die img heet in de map waarin je werkt. Daarin plaats je dan de afbeelding met de naam naar keuze de src tag word dan <code>src=&quot;img/naamLogo.jpg&quot;</code> bijvoorbeeld met naamLogo.jpg uiteraard aangepast naar jouw logo en bestand. Het alt is de tekst die komt als de afbeelding niet kan geladen worden, ook word die gelezen op ereaders. Je kan daar bijvoorbeeld <em>logo</em> schrijven.</p>
+<p>Verder gaan we een navigatie maken. We moeten naar home kunnen gaan, naar tickets, de bezoeker moet contact kunnen opnemen en ook inloggen/registreren moet mogelijk zijn. We gaan hiervoor een <code>&lt;nav&gt;&lt;/nav&gt;</code> tag maken. Hierin plaatsen we een ul met list items van anchor (<code>&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;</code>). De anchor gaan we aanmaken met de naam van de pagina en de href is de url van de pagina. Hieronder kan je een voorbeeld zien van hoe het moet.</p>
+<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>TicketShop<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"img/logo.png"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"logo"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"index.html"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"ticket.html"</span>&gt;</span>Tickets<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"contact.html"</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"login.html"</span>&gt;</span>Login<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"register.html"</span>&gt;</span>Register<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+</div></code></pre>
+<p>Na de header die we gemaakt hebben en zullen hergebruiken in de andere pagina's gaan we nu de <em>main</em> maken dit is alle content van de pagina zelf.
+We gaan werken met sections de eerste is de intro van de website en bevat een welkom en een tekstje over de website. De tweede section is dan een voorbeeld van een ticket.
+Een ticket zit in een fieldset en bevat een titel (welke wedstrijd) een afbeelding, een korte beschrijving, de prijs en een knop om naar de productpagina te gaan om het ticket te bestellen. Hieronder in het voorbeeld zie je hoe dat gebeurt. Probeer dit zo goed mogelijk na te maken en begrijpen vooral wat er gebeurt.</p>
+<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Welcome to TicketShop<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quidem.
+            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Uitgelicht<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>ploegA-ploegB<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./img/gameImg.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"ploegA-ploegB"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>description short<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>ticketprijs: €42.50<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">"location.href='ticketInfo.html'"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'Meer info'</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+</div></code></pre>
+<h3 id="ticketinfohtml">ticketInfo.html</h3>
+<p>Deze pagina bevat de informatie over het ticket. Hierin zie je de titel, de afbeelding, de beschrijving, de prijs en een knop om het ticket te bestellen.</p>
+<p>De basis van deze pagina is dezelfde als altijd (je kan bijvoorbeeld index.html kopieren en alles in de main weg doen en de titel aanpassen.)</p>
+<p>Verder bevat de main gewoon de titel, afbeelding, uitgebreide beschrijving, het aantal beschikbare tickets en de ticketprijs. Het speciale aan deze pagina is dat ze een input veld bevat voor het aantal tickets. Deze input veld geeft aan hoeveel tickets je wilt bestellen.</p>
+<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>ploegA-ploegB<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./img/gameImg.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"ploegA-ploegB"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>description long<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>tickets available: 596<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>ticketprijs: €42.50<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-comment">&lt;!--input number amount to order--&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"amount"</span> <span class="hljs-attr">min</span>=<span class="hljs-string">"0"</span> <span class="hljs-attr">max</span>=<span class="hljs-string">"10"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"0"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">"location.href='ticketInfo.html'"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'koop'</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+</div></code></pre>
+<h3 id="tickethtml">ticket.html</h3>
+<p>De basis van deze pagina is dezelfde als altijd (je kan bijvoorbeeld index.html kopieren en alles in de main weg doen en de titel aanpassen.)</p>
+<p>Verder bevat de main van deze pagina verschillende wedstrijden. Ook die kan je kopieren uit de main van index.html en verschillende keren plakken in deze main.</p>
+<h3 id="contacthtml">contact.html</h3>
+<p>Opnieuw is de basis dezelfde.
+Dit formulier bevat een naam, email en berichtvak.</p>
+<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+        <span class="hljs-comment">&lt;!--Contact info form--&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">""</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"name"</span>&gt;</span>Name:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"name"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"email"</span>&gt;</span>Email:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"message"</span>&gt;</span>Message:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"message"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"message"</span> <span class="hljs-attr">cols</span>=<span class="hljs-string">"30"</span> <span class="hljs-attr">rows</span>=<span class="hljs-string">"10"</span> <span class="hljs-attr">required</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">textarea</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Send"</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+</div></code></pre>
+<h3 id="loginhtml">login.html</h3>
+<p>Opnieuw is de basis hetzelfde.
+Verder bestaat de main uit een formulier met username en password en een loginknop.</p>
+<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"login.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Login<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"username"</span>&gt;</span>Username:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"username"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"password"</span>&gt;</span>Password:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"password"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Login"</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</div></code></pre>
+<h3 id="registerhtml">register.html</h3>
+<p>Opnieuw is de basis hetzelfde.
+Verder bestaat de main uit een formulier een aantal input fields en een registerknop.</p>
+<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">"register.php"</span> <span class="hljs-attr">method</span>=<span class="hljs-string">"post"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">legend</span>&gt;</span>Register<span class="hljs-tag">&lt;/<span class="hljs-name">legend</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"firstname"</span>&gt;</span>firstname:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"firstname"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"firstname"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"lastname"</span>&gt;</span>lastname:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"lastname"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"lastname"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"birthdate"</span>&gt;</span>Birthdate:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"date"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"birthdate"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"birthdate"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"adress"</span>&gt;</span>Adress:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"adress"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"adress"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"zipcode"</span>&gt;</span>Zipcode:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"zipcode"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"zipcode"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"city"</span>&gt;</span>City:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"city"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"city"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"country"</span>&gt;</span>Country:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"country"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"country"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"phone"</span>&gt;</span>Phone:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"phone"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"phone"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"username"</span>&gt;</span>Username:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"username"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"password"</span>&gt;</span>Password:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"password2"</span>&gt;</span>Repeat password:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"password2"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"password2"</span> <span class="hljs-attr">required</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"submit"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Register"</span>&gt;</span>
+                <span class="hljs-comment">&lt;!--ask birthdate and adress--&gt;</span>
+
+            <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+</div></code></pre>
+<p>Dat ws de basis van onze website. Al een hele boterham maar het viel al bij al nog mee, nietwaar?</p>
+<hr>
+<h1 id="sessie-1-deel-2-css-basics">Sessie 1: deel 2 CSS Basics</h1>
+<h2 id="inleiding">inleiding</h2>
+<p>CSS wordt gebruikt voor de layout van een website.
+Zonder css zou het er allemaal niet zo mooi uit zien online.
+Om u een voorbeeld te geven heb ik hier 2 afbeeldingen geplaatst van dezelfde website. Instagram. De ene heeft CSS de andere niet. Zo zie je ook dat die storys opgebouwd zijn als buttons in een unorderd list.
+<img src="./img/inst_metcss.PNG" alt="Instagram met CSS">
+<img src="./img/insta_nocss.jpg" alt="Instagram zonder CSS"></p>
+<p>CSS bestaat uit verschillende belangrijke begrippen. Die zijn uitgelegd aan de hand van volgende figuur. Deze figuur is een voorbeeld van een CSS code. Het is een stijlregel.
+<img src="./img/cssStijlregel.jpg" alt="CSS stijlregel met basisbegrippen"></p>
+<p>Een CSS bestand linken aan een HTML gebeurt met volgende regel:</p>
+<pre class="hljs"><code><div>    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/style.css"</span>&gt;</span>
+</div></code></pre>
+<p>Je kan verder ook externe links toevoegen het moet niet een lokaal bestand zijn maar mag even goed een css bestand online zijn.</p>
+<h2 id="css-selectors">CSS selectors</h2>
+<ul>
+<li>Type selectors:
+<ul>
+<li>selecteren alle elementen van een bepaald type, denk aan div, span, li,...</li>
+<li>Je gebruikt bijvoorbeeld div indien je alle div elementen in de html dezelfde stijl wilt gebruiken</li>
+<li><code>div {...}</code></li>
+</ul>
+</li>
+<li>Class selectors:
+<ul>
+<li>Zorgen ervoor dat je classes kan selecteren uit de html.</li>
+<li>In HTML bijvoorbeeld <code>&lt;div class=&quot;fablab&quot;&gt;...&lt;/div&gt; &lt;p class=&quot;fablab&quot;&gt;...&lt;/p&gt;</code></li>
+<li>In CSS dan: <code>.fablab {...}</code></li>
+</ul>
+</li>
+<li>Id selectors:
+<ul>
+<li>om een uniek deel (element) van een pagina te identificeren in style sheet voorafgegaan door een #</li>
+<li>een Id komt maar 1 keer voor.</li>
+<li>HTML: <code>&lt;div id=&quot;ditIsId&quot;&gt;...&lt;/div&gt;</code></li>
+<li>CSS: <code>#ditIsId {...}</code></li>
+</ul>
+</li>
+<li>Group selectors:
+<ul>
+<li>Als je dezelfde stijl voor verschillende elementen wilt gebruiken. Kan voor type en classes door elkaar zijn.</li>
+<li>verschillende schijden met een ',' zodat je meerdere elementen selecteert.</li>
+<li>CSS: <code>div, .fablab, a {...}</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="onze-website">Onze website.</h2>
+<p>Vanaf nu werken we verder op onze website, we gaan de css theorie daarop toepassen.</p>
+<h3 id="achtergrond">Achtergrond</h3>
+<p>We gaan voor onze body, al onze paginas, een achtergrond kleur instellen. Dit doe je heel eenvoudig door:</p>
+<pre class="hljs"><code><div>    <span class="hljs-selector-tag">body</span> {
+        <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5f5</span>;
+    }
+</div></code></pre>
+<p>De  #f5f5f5 is een heel licht grijs.
+Zoals je nu gemerkt hebt is de achtergrond een beetje veranderd dus van kleur. Het valt niet zo hard op omdat het heel licht grijs is.</p>
+<h3 id="tekst">Tekst</h3>
+<p>Vervolgens gaan we een lettertype instellen. Er is veel mogelijk met lettertypes en tekst. Nu gaan we het echter beperkt houden je kan eens kijken bij <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Fundamentals">MDM font en text fundamentals</a>.</p>
+<p>We gaan een font-family instellen. Dit is een reeks fonts waarop hij terugvalt als de eerste niet werkt gaat hij de tweede nemen en zo verder. Je kan zelf de fonts kiezen, hier wordt een standaard gebruikt die visual studio code voorstelde.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#f5f5f5</span>;
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"Helvetica Neue"</span>,Helvetica,Arial,sans-serif;
+}
+</div></code></pre>
+<h3 id="lijsten-en-navigatie">Lijsten en navigatie</h3>
+<p>Je kan lijsten op verschillende manieren opmaken. Bijvoorbeeld een ordered list ipv met 1. 2. en  zo voort met letters te laten werken (Eerste vb) of een unordered list zonder icoontje (tweede). Er zijn nog enkele andere voorbeelden, weet jij wat ze doen?</p>
+<pre class="hljs"><code><div>    <span class="hljs-selector-tag">ol</span> {
+        <span class="hljs-attribute">list-style-type</span>: upper-alpha;
+    }
+    <span class="hljs-selector-tag">ul</span> {
+        <span class="hljs-attribute">list-style-type</span>: none;
+    }
+
+    <span class="hljs-selector-tag">ol</span> <span class="hljs-selector-tag">li</span> {
+        <span class="hljs-attribute">list-style-type</span>: lower-alpha;
+    }
+    <span class="hljs-selector-tag">ol</span> <span class="hljs-selector-tag">li</span> {
+        <span class="hljs-attribute">list-style-type</span>: lower-roman;
+    }
+    <span class="hljs-selector-tag">ol</span> <span class="hljs-selector-tag">li</span> {
+        <span class="hljs-attribute">list-style-type</span>: upper-alpha;
+    }
+    <span class="hljs-selector-tag">ol</span> <span class="hljs-selector-tag">li</span> {
+        <span class="hljs-attribute">list-style-type</span>: upper-roman;
+    }
+    <span class="hljs-selector-tag">ul</span>{
+        <span class="hljs-attribute">list-style-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'./img/list.png'</span>);
+    }
+</div></code></pre>
+<p>Voor onze website hebben we een nav element met een ul er in we gaan die dus ook instellen met list-style-type:none</p>
+<pre class="hljs"><code><div>    <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> {
+        <span class="hljs-attribute">list-style-type</span>: none;
+    }
+</div></code></pre>
+<p>(nav ul betekent dat de ul in een nav moet zitten, hier is geen komma maar een spatie)</p>
+<p>Bij lijsten kunnen we verder ook specifieren over hoeveel colommen de lijst moet worden getoond. Standaard is dit 1 maar je kan dit veranderen.</p>
+<pre class="hljs"><code><div>    <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> {
+        <span class="hljs-attribute">column-count</span>: <span class="hljs-number">3</span>;
+    }
+</div></code></pre>
+<p><img src="./img/navigatie_column3.jpg" alt="column-count: 3">
+Zoals je ziet is de lijst nu opgedeeld in 3 kolommen.</p>
+<p>Voor onze website zullen we voor 5 kolommen gaan.</p>
+<pre class="hljs"><code><div>    <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> {
+        <span class="hljs-attribute">column-count</span>: <span class="hljs-number">5</span>;
+    }
+</div></code></pre>
+<h3 id="de-links">De links</h3>
+<p>In dit deel gaan we de links van de navigatie een beetje aanpassen.</p>
+<p>Om te beginnen gaan we een kadertje rond de links zetten.
+Daarvoor gaan we de link items selecteren en een border (of rand) instellen. Bij deze border heb je een dikte, een stijl en een kleur.
+In dit geval kiezen we voor een volle lijn in het zwart met een dikte van 1px.</p>
+<pre class="hljs"><code><div>    <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> {
+        <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;
+    }
+</div></code></pre>
+<p>Nu zien de links er niet meer zo mooi uit hé? Dit komt omdat de list items de resterende plaats verdelen over zichzelf. Je kan dit oplossen door het <code>a</code> element te selecteren in plaats van het li element. Weet je nog hoe dat moet?</p>
+<p>Nu is de rand nogal op de tekst geplakt.
+Er zijn daarvoor oplossingen. Maar de vraag is welke werkt in dit geval?</p>
+<ul>
+<li>Enerzijds is er padding. Dat is de ruimte binnen het element.</li>
+<li>De andere optie is margin. Dat is de ruimte tussen het element en de andere elementen op de pagina.</li>
+</ul>
+<p>Die twee worden nog wel eens door elkaar gehaald. deze handige afbeelding kan misschien iets duidelijk maken.
+<img src="./img/margin_padding.jpg" alt="margin vs padding"></p>
+<p>Als je nu naar die afbeelding kijkt. Welke van de twee zou je gebruiken om plaats te krijgen tussen de rand en de tekst?</p>
+<pre class="hljs"><code><div>    <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> {
+        <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;
+        <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
+    }
+</div></code></pre>
+<pre class="hljs"><code><div>    <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> {
+        <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;
+        <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;
+    }
+</div></code></pre>
+<p>Juist ja de padding. De margin zorgt ervoor dat de link verder van de andere links komt te staan.</p>
+<p>Zullen we misschien nog een ronde rand geven aan de linkjes?</p>
+<pre class="hljs"><code><div>    <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> {
+        <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;
+        <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;
+        <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">10px</span>;
+    }
+</div></code></pre>
+<p>Border radius is een property die je kan gebruiken om de hoeken van een element af te ronden. Misschien ken je radius wel van uit wiskunde?</p>
+<p>tot slot kunnen we er ook voor zorgen dat de kleur veranderd als we over de link gaan met de muis. Dit doen we met de pseudo-class hover.
+pseudo classes zijn speciale classes die je kan gebruiken om een element te selecteren op basis van een bepaalde toestand.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-pseudo">:hover</span> {
+    <span class="hljs-attribute">background-color</span>: green;
+}
+</div></code></pre>
+<p>Deze code zorgt ervoor dat de achtergrond groen wordt als je met de muis over de link gaat.</p>
+<h2 id="css-grid">CSS Grid</h2>
+<p>uitleg to do</p>
+<h2 id="css-flexbox">CSS Flexbox</h2>
+<p>Bij dit deel van de opdracht kan je in de map <code>flexbegin</code> een HTML en CSS bestand vinden. Je kan deze met de live server openen, bekijken en vooral aanpassen en wat prutsen.</p>
+<h3 id="flex-containter">Flex containter</h3>
+<p>Bij normale pagina word elk element onder elkaar gezet. Elke blok begint dus op een nieuwe lijn.
+Flexbox veranderd dit. Het idee is dat er een <em>Main Axis</em> is waarlangs elk element geplaatst word. En dan is er de <em>Cross Axis</em> die loodrecht staat op de <em>Main Axis</em>. Als de main axis vol staat begint het volgende element op de volgende plek in de cross axis. Standaard is de main axis horizontaal van links naar rechts en de cross axis verticaal van boven naar beneden. Dit kan aangepast worden met behulp van de flex-direction property.
+<img src="./img/flexdirection.jpg" alt="flexdirection"></p>
+<p>Een overzicht van flex:
+<img src="./img/flexoverview.jpg" alt="flex overview"></p>
+<h3 id="flex-wrap">Flex wrap</h3>
+<p>Voor flex wrap verwijs ik graag naar onderstaande afbeelding. Dit maakt het eigenlijk duidelijk... Door de flex container een flex-wrap property te geven kan je ervoor zorgen dat elementen die niet meer passen in de main axis naar de volgende lijn gaan. Standaard is 'nowrap' van toepassing.
+<img src="./img/flexwrap.jpg" alt="flex wrap"></p>
+<h3 id="items-uitlijnen">Items uitlijnen</h3>
+<p>Om de items uit te lijnen kan je gebruik maken van de justify-content en align-items properties.
+<code>justify-content</code> zorgt ervoor dat de items op de main axis uitgelijnd worden.
+<code>align-items</code> zorgt er dan weer voor dat de items op de cross axis uitgelijnd worden.</p>
+<h4 id="justify-content">justify-content</h4>
+<p>De verschillende opties voor justify-content zijn:</p>
+<ul>
+<li>flex-start</li>
+<li>flex-end</li>
+<li>center</li>
+<li>space-around</li>
+<li>space-between</li>
+<li>space-evenly</li>
+</ul>
+<p>Probeer deze zelf eens uit en bekijk het verschil!
+<img src="./img/justifycontent.jpg" alt="justify-content"></p>
+<h4 id="align-items">align-items</h4>
+<p>De verschillende opties voor align-items zijn:</p>
+<ul>
+<li>stretch</li>
+<li>flex-start</li>
+<li>flex-end</li>
+<li>center</li>
+<li>baseline (aligneert items volgens onderkant tekst)</li>
+</ul>
+<p>Ook hier geldt, probeer zelf eens</p>
+<h3 id="order">Order</h3>
+<p>Door een order toe te voegen kan je de volgorde aanpassen. Standaard wordt de volgorde bepaald door de volgorde van de elementen in de HTML. Door een order toe te voegen kan je de volgorde aanpassen. (word van klein naar groot gedaan)</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">div</span><span class="hljs-selector-id">#one</span> {
+    <span class="hljs-attribute">order</span>: <span class="hljs-number">5</span>
+}
+
+<span class="hljs-selector-tag">div</span><span class="hljs-selector-id">#two</span> {
+    <span class="hljs-attribute">order</span>: <span class="hljs-number">4</span>
+}
+
+</div></code></pre>
+<p><img src="./img/flexorder.jpg" alt="flex order"></p>
+<h3 id="flex-growshrinkbasis">Flex Grow/shrink/basis</h3>
+<p>Flex grow, shrink en basis zijn eigenschappen die je kan toepassen op flex items.
+Flex grow zorgt ervoor dat een item groter wordt als er ruimte voor is. Flex shrink zorgt ervoor dat een item kleiner wordt als er te weinig ruimte is. Flex basis zorgt ervoor dat een item een bepaalde breedte heeft.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">div</span><span class="hljs-selector-id">#two</span> {
+    <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">1</span>;
+    <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">1</span>;
+}
+</div></code></pre>
+<p>Probeer dit zelf even uit. Je kan je scherm dan groter en kleiner maken en je zal zien dat de items zich aanpassen, of net niet...</p>
+<p><img src="./img/flexgrow.jpg" alt="flex grow shrink basis"></p>
+<h2 id="tickets">Tickets</h2>
+<p>Terug naar onze website;
+We gaan de tickets een beetje mooier maken.
+voeg aan de fieldsets van de tickets een class ticket toe.
+Vergeet niet bij de index.html te kijken!
+<img src="./img/ticketclass.jpg" alt="ticket class toevoegen"></p>
+<p>Om te beginnen gaan we de foto kleiner maken.
+We gaan de hoogte 200px maken en de breedte automatisch laten schalen</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.ticket</span> <span class="hljs-selector-tag">img</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+    <span class="hljs-attribute">height</span>: auto;
+}
+</div></code></pre>
+<p>Laten we nu de titel in het midden zetten, de eerste letter van de titel zou altijd een hoofdletter moeten zijn. We gaan daarvoor een truckje toepassen.
+Om te beginnen zetten we het h3 element (de titel) in het midden van zijn container. Dat zou niet zo moeilijk moeten zijn.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.ticket</span> <span class="hljs-selector-tag">h3</span> {
+    <span class="hljs-attribute">text-align</span>: center;
+}
+</div></code></pre>
+<p>Nu gaan we ook de eerste letter van de titel in hoofdletter zetten. We kunnen daarvoor iets gebruiken dat <code>text-transform</code> heet.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.ticket</span> <span class="hljs-selector-tag">h3</span> {
+    <span class="hljs-attribute">text-align</span>: center;
+    <span class="hljs-attribute">text-transform</span>: capitalize;
+}
+</div></code></pre>
+<p>Als je goed kijkt, zie je nu dat elk woord begint met de eerste letter als hoofdletter. Dat is niet wat we willen. We willen enkel de eerste letter van de volledige titel in hoofdletter.
+We kunnen hiervoor de pseudo class <code>first-letter</code> gebruiken. (Het maakt niet uit of je <code>capitalize</code> of <code>uppercase</code> gebruikt)</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.ticket</span> <span class="hljs-selector-tag">h3</span><span class="hljs-selector-pseudo">:first-letter</span> {
+    <span class="hljs-attribute">text-transform</span>: uppercase;
+}
+</div></code></pre>
+<p>Het volgende 'probleem' is dat een ticket de hele breedte van de pagina inneemt maar dat is niet zo fijn. We willen dat de fieldset van een ticket enkel de plek inneemt die het nodig heeft en dat we op die manier meerdere tickets naast elkaar kunnen krijgen.
+Om dat te doen zou je de fieldset een breedte kunnen geven. Maar er is een ander truckje voor.
+We gaan de fieldset een display geven van <code>inline-block</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.ticket</span> {
+    <span class="hljs-attribute">display</span>: inline-block;
+}
+</div></code></pre>
+<p>Voor de zekerheid geven we een maximum breedte van 300px. En de hoogte zetten we op <code>auto</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.ticket</span> {
+    <span class="hljs-attribute">display</span>: inline-block;
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">300px</span>;
+    <span class="hljs-attribute">height</span>: auto;
+}
+</div></code></pre>
+<p>Nu is de hoogte niet gelijk bij elk element. We kunnen dit oplossen door gebruik te maken van <strong>flex</strong></p>
+<p>Om dit te doen werken moeten we een paar dingen te veranderen.
+Bij de <code>.ticket</code> mag je de <code>display:inline-block</code> weglaten.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.ticket</span> {
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">300px</span>;
+    <span class="hljs-attribute">height</span>: auto;
+}
+</div></code></pre>
+<p>Vervolgens moeten we de flex container maken. We voegen een id toe aan de section waar de tickets in staan.</p>
+<pre class="hljs"><code><div>        <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"ticket"</span>&gt;</span> <span class="hljs-comment">&lt;!--hier id="ticket" aan toevoegen --&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">fieldset</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"ticket"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>ploegA-ploegB<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./img/gameImg.jpg"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"ploegA-ploegB"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, dolorum odio libero consequatur
+                    consequuntur distinctio possimus odit quae obcaecati officia! Accusamus molestias corporis beatae
+                    hic culpa voluptatibus error quae totam.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>ticketprijs: €42.50<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">"location.href='ticketInfo.html'"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">'Meer info'</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+            ...
+
+            <span class="hljs-tag">&lt;/<span class="hljs-name">fieldset</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span>
+</div></code></pre>
+<p>En in de css:</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">section</span><span class="hljs-selector-id">#ticket</span> {
+    <span class="hljs-attribute">display</span>: flex;
+}
+</div></code></pre>
+<p>We gaan de space-evenly gebruiken om de tickets mooi naast elkaar te krijgen.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">section</span><span class="hljs-selector-id">#ticket</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">justify-content</span>: space-evenly;
+}
+</div></code></pre>
+<p>Nu zijn de tickets mooi naast elkaar. Maar ze zijn nog niet even groot. We gaan eerst beginnen met een flex-basis van 250px. Vervolgens kunnen we met behulp van flex-grow en flex-shrik de tickets gelijk maken.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-class">.ticket</span> {
+    <span class="hljs-attribute">flex-basis</span>: <span class="hljs-number">250px</span>;
+    <span class="hljs-attribute">flex-grow</span>: <span class="hljs-number">1</span>;
+    <span class="hljs-attribute">flex-shrink</span>: <span class="hljs-number">1</span>;
+}
+</div></code></pre>
+<p>Vervolgens gaan we de ticketprijs en knop (laatste 2 elementen) onderaan de ticket zetten.
+We gaan daarvoor de tickets ook een <code>flex</code> maken en dan de <code>flex-direction</code> van de <code>fieldset.ticket</code> veranderen naar <code>column</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">fieldset</span><span class="hljs-selector-class">.ticket</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: column;
+}
+</div></code></pre>
+<p>Tot slot nemen we de prijs (voorlaatste element) een margin-top geven die automatisch gezet wordt.</p>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">section</span> <span class="hljs-selector-class">.ticket</span> <span class="hljs-selector-pseudo">:nth-last-child(2)</span> {
+    <span class="hljs-attribute">margin-top</span>: auto;
+}
+</div></code></pre>
+
+</body>
+</html>

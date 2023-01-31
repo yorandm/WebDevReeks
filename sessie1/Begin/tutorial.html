@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>My cat is very grumpy</p>
+    <p>Welkom! <br> Bij STEAMCLUBS</p>
+    <ul>
+        <li> Rijbewijs A</li>
+        <li> Rijbewijs B</li>
+        <li> Rijbewijs C</li>
+    </ul>
+
+    <!-- table with caption and rows with random data -->
+    <table>
+        <caption>
+            Table with random data
+        </caption>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>City</th>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>25</td>
+            <td>Amsterdam</td>
+        </tr>
+        <tr>
+            <td>Jane</td>
+            <td>23</td>
+            <td>Rotterdam</td>
+        </tr>
+        <tr>
+            <td>Jeroen</td>
+            <td>22</td>
+            <td>Den Haag</td>
+        </tr>
+        <tr>
+            <td>Jasper</td>
+            <td>15</td>
+            <td>Boekel</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <!--pizza ordering form  name, firstname, password, delivertime (3 choises, radio button), type pizza (selection) and toppings (checkboxes)-->
+    <fieldset>
+        <legend>Pizza order</legend>
+        <form action="">
+            <label for="name">Name
+            <input type="text" name="name" id="name"></label>
+            <label for="firstname">Firstname
+            <input type="text" name="firstname" id="firstname"></label>
+            <label for="password">Password
+            <input type="password" name="password" id="password"></label>
+            <label for="delivertime">Deliver time
+            <input type="radio" name="delivertime" id="delivertime" value="morning">Morning
+            <input type="radio" name="delivertime" id="delivertime" value="afternoon">Afternoon
+            <input type="radio" name="delivertime" id="delivertime" value="evening">Evening</label>
+            <label for="type">Type
+            <select name="type" id="type">
+              <option value="margherita">Margherita</option>
+              <option value="hawaiian">Hawaiian</option>
+              <option value="meat">Meat</option>
+          </select></label>
+            <label for="toppings">Toppings
+            <input type="checkbox" name="toppings" id="toppings" value="cheese">Cheese
+            <input type="checkbox" name="toppings" id="toppings" value="mushrooms">Mushrooms
+            <input type="checkbox" name="toppings" id="toppings" value="pepperoni">Pepperoni
+            <input type="checkbox" name="toppings" id="toppings" value="sausage">Sausage</label>
+            <!--deliver date selector-->
+            <label for="deliverdate">Deliver date
+            <input type="date" name="deliverdate" id="deliverdate"></label>
+            <!--number input-->
+            <label for="aantal">Number
+            <input type="number" name="aantal" id="aantal"></label>
+            <!--textfield input "extra info"-->
+            <label for="extra">Extra info
+                          <input type="text" name="extra" id="extra"></label>
+            <!--submit button-->
+            <input type="submit" value="Order">
+        </form>
+    </fieldset>
+</body>
+
+</html>
