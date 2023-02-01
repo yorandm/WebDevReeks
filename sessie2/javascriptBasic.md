@@ -96,3 +96,6 @@ Best maak je al je variabelen const tenzij het niet anders kan.
 ### naamgeving
 Je kan een variabele een naam geven die je zelf wil. Je mag geen spaties gebruiken. Je mag wel hoofdletters gebruiken. Ook cijfers kunnen gebruikt worden, maar niet als eerste letter. 
 Best gebruik je ook camelCasing. Dat is wanneer je een woord aan elkaar plakt en met uitzondering van het eerste woord, elk woord begint met een hoofdletter. Bijvoorbeeld: welkomBijDeSteamClubs. Gebruik zinvolle namen. Dus niet `a` of `b` maar `leeftijd` of `naam`.	
+
+## Datatypes
+In javascript heb je verschillende datatypes. We gaan er niet heel diep op ingaan maar je kan best een kijkje nemen op: https://javascript.info/types. We gaan ze dus even gebruiken zonder uitleg, uiteraard als je verder gaat met web development is het wel goed als je er meer over te weten komt.
